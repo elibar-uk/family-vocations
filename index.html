@@ -3,18 +3,61 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Family Vocations — holiday plans, itineraries, and travel resources for our family.">
   <title>Family Vocations</title>
-  <link rel="stylesheet" href="assets/css/hub.css">
+  <link rel="stylesheet" href="assets/css/hub.css?v=2">
 </head>
 <body>
-  <main>
-    <header>
+  <div class="page">
+    <header class="hero">
       <h1>Family Vocations</h1>
-      <p class="tagline">Holiday plans, itineraries, and travel resources for our family.</p>
+      <p class="hero-lead">
+        A shared calling to grow together, create meaningful memories, and make the most of the time we spend exploring the world as a family.
+      </p>
     </header>
-    <ul id="trip-list" class="trip-list" hidden></ul>
-    <p id="empty-state" class="empty-state" hidden>No trips yet.</p>
-  </main>
+
+    <section class="section" aria-labelledby="vocation-heading">
+      <h2 id="vocation-heading">What does &ldquo;vocation&rdquo; mean?</h2>
+      <p>
+        The word <em>vocation</em> traditionally means a calling, purpose, or mission. It comes from the Latin <em>vocare</em>, meaning &ldquo;to call.&rdquo;
+      </p>
+      <p>
+        In the context of Family Vocations, a family is not just a group of people living together&mdash;it has a shared calling to:
+      </p>
+      <ul class="calling-list">
+        <li>Love and support one another</li>
+        <li>Build strong relationships</li>
+        <li>Create meaningful experiences</li>
+        <li>Pass on values and traditions</li>
+        <li>Help each family member grow and flourish</li>
+      </ul>
+      <p>
+        Family holidays are one way of living out that calling. They provide dedicated time to connect, communicate, create memories, and strengthen family bonds.
+      </p>
+    </section>
+
+    <section class="section" aria-labelledby="purpose-heading">
+      <h2 id="purpose-heading">Purpose</h2>
+      <p>
+        The name <strong>Family Vocations</strong> reflects the idea that a family has a shared calling to grow together, support one another, create meaningful memories, and strengthen relationships. Family holidays provide valuable opportunities to live out that calling by spending intentional time together, exploring new experiences, and building lasting traditions.
+      </p>
+      <p>
+        This site collects and organizes our holiday plans, itineraries, and travel resources&mdash;so every trip is intentional, well prepared, and worth remembering.
+      </p>
+    </section>
+
+    <section class="section" aria-labelledby="trips-heading">
+      <h2 id="trips-heading">Trips</h2>
+      <p class="trips-intro">Browse our family holidays. Each page holds the plans, itinerary, and resources for that trip.</p>
+      <ul id="trip-list" class="trip-list" hidden></ul>
+      <p id="empty-state" class="empty-state" hidden>No trips yet.</p>
+    </section>
+
+    <footer class="site-footer">
+      <p>Family Vocations &mdash; intentional time together</p>
+    </footer>
+  </div>
+
   <script>
     fetch('data/trips.json')
       .then(function (res) { return res.json(); })
@@ -23,10 +66,16 @@
         var list = document.getElementById('trip-list');
         list.innerHTML = trips.map(function (trip) {
           return (
-            '<li><a href="trips/' + trip.slug + '/">' +
-            '<span class="trip-title">' + trip.title + '</span>' +
-            (trip.subtitle ? '<span class="trip-subtitle">' + trip.subtitle + '</span>' : '') +
-            '</a></li>'
+            '<li>' +
+              '<a class="trip-card" href="trips/' + trip.slug + '/">' +
+                '<span class="trip-card-header">' +
+                  '<span class="trip-title">' + trip.title + '</span>' +
+                  '<span class="trip-year">' + trip.year + '</span>' +
+                '</span>' +
+                (trip.subtitle ? '<span class="trip-subtitle">' + trip.subtitle + '</span>' : '') +
+                '<span class="trip-cta">View trip plans &rarr;</span>' +
+              '</a>' +
+            '</li>'
           );
         }).join('');
         list.hidden = trips.length === 0;
