@@ -2,15 +2,15 @@
 
 :root {
   --bg: #faf9f5;
-  --surface: rgba(255, 255, 255, 0.92);
+  --surface: rgba(255, 255, 255, 0.88);
   --text: #1a1a1a;
   --muted: #444;
   --subtle: #666;
   --border: rgba(255, 255, 255, 0.35);
   --accent: #5b4a8a;
   --accent-soft: rgba(91, 74, 138, 0.12);
-  --hero-text: #f8f6ff;
-  --hero-muted: rgba(248, 246, 255, 0.82);
+  --hero-title: #3d2d5c;
+  --hero-lead: #4a3d66;
 }
 
 body {
@@ -26,7 +26,7 @@ body::before {
   position: fixed;
   inset: 0;
   background: url("../images/home-bg.png") center top / cover no-repeat;
-  opacity: 0.45;
+  opacity: 0.72;
   z-index: -2;
 }
 
@@ -36,9 +36,9 @@ body::after {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(18, 14, 28, 0.15) 0%,
-    rgba(250, 249, 245, 0.82) 28%,
-    rgba(250, 249, 245, 0.9) 100%
+    rgba(250, 249, 245, 0.35) 0%,
+    rgba(250, 249, 245, 0.55) 45%,
+    rgba(250, 249, 245, 0.68) 100%
   );
   z-index: -1;
 }
@@ -53,17 +53,10 @@ body::after {
 
 .hero {
   text-align: center;
-  margin: 0 -1.5rem 3rem;
-  padding: 4.5rem 1.5rem 3.5rem;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(12, 8, 22, 0.72) 0%,
-      rgba(18, 14, 28, 0.55) 55%,
-      rgba(250, 249, 245, 0) 100%
-    ),
-    url("../images/home-bg.png") center 20% / cover no-repeat;
-  color: var(--hero-text);
+  margin-bottom: 2.5rem;
+  padding: 3rem 0 0.5rem;
+  background: none;
+  color: var(--hero-title);
 }
 
 .hero h1 {
@@ -72,15 +65,14 @@ body::after {
   letter-spacing: -0.03em;
   line-height: 1.15;
   margin-bottom: 1rem;
-  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+  color: var(--hero-title);
 }
 
 .hero-lead {
   font-size: 1.0625rem;
-  color: var(--hero-muted);
+  color: var(--hero-lead);
   max-width: 32rem;
   margin: 0 auto;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
 }
 
 /* Sections */
